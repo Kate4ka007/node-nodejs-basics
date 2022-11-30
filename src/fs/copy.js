@@ -1,8 +1,12 @@
 import * as fs from "fs/promises";
 import path from "path";
+import url from 'url';
 
-const FOLDER_PATH = './files';
-const FOLDER_PATH_COPY = './files_copy';
+const __dirname = url.fileURLToPath(new URL('.',
+  import.meta.url));
+
+const FOLDER_PATH = path.join(__dirname, 'files');
+const FOLDER_PATH_COPY = path.join(__dirname, 'files_copy');
 const ERROR_MESSAGE = "FS operation failed";
 
 const copy = async () => {

@@ -1,7 +1,12 @@
 import * as fs from 'fs/promises';
 import process from 'process';
+import path from 'path';
+import url from 'url';
 
-const FOLDER_PATH = './files';
+const __dirname = url.fileURLToPath(new URL('.',
+  import.meta.url));
+
+const FOLDER_PATH = path.join(__dirname, 'files');
 const ERROR_MESSAGE = "FS operation failed";
 
 const list = async () => {
