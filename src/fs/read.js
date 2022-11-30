@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'fs/promises';
 import process from 'process';
 import path from 'path';
 
@@ -7,10 +7,11 @@ const PATH = path.join("./files", FILE_NAME);
 const ERROR_MESSAGE = 'FS operation failed';
 
 const read = async () => {
-    fs.readFile(PATH, "utf8", (error, data) => {
+    const file = await fs.readFile(PATH, "utf8", (error) => {
         if (error) throw new Error(ERROR_MESSAGE);
-        process.stdout.write(data.toString());
+
     });
+    process.stdout.write(file);
 };
 
 await read();
