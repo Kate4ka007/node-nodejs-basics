@@ -1,5 +1,11 @@
+import process from "process";
 const parseEnv = () => {
-    // Write your code here 
+  const data = process.env;
+
+  for (let key in data) {
+    let value = data[key];
+    process.stdout.write(`RSS_${key} = ${value}; `);
+  }
 };
 
 parseEnv();
